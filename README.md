@@ -1,34 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ⚔️ Frontend de Master Rol App
 
-## Getting Started
+Este proyecto esta creado con Next.js, un framework de React. Next.js le ofrece la mejor experiencia para desarrolladores con todas las funciones que necesita para la producción: renderización híbrida estática y de servidor, compatibilidad con TypeScript, agrupación inteligente, precarga de rutas y mucho más.
 
-First, run the development server:
+El primer paso para ejecutar el proyecto en instalar las dependencias.
+
+```
+npm install
+# o
+yarn install
+```
+
+# Primeros pasos
+
+Primero, ejecuta el servidor de desarrollo:
 
 ```bash
 npm run dev
-# or
+# o
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) con tu navegador para ver el resultado.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- Las páginas están en la carpeta `pages`. La página se auto-actualiza a medida que editas el archivo.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- Los fragmentos de página o componentes están en la carpeta `components`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Las utlidades como las funciones que llaman a la api del backend están en la carpeta `lib`.
 
-## Learn More
+- Los estilos de css están en la carpeta `styles`.
 
-To learn more about Next.js, take a look at the following resources:
+Para ahorrar tiempo en el diseño se utiliza una libreria que se llama react-bootstrap. Para saber más echa un vistazo a la [Documentación de React-Bootstrap](https://react-bootstrap.github.io/).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Más información
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Para saber más sobre Next.js, echa un vistazo a los siguientes recursos:
 
-## Deploy on Vercel
+- [Next.js Documentation](https://nextjs.org/docs) - aprende sobre las características y la API de Next.js.
+- Learn Next.js](https://nextjs.org/learn) - un tutorial interactivo de Next.js.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
