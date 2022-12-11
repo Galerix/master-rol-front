@@ -1,11 +1,14 @@
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Container, Row } from "react-bootstrap";
-import CharacterCard from "../../components/characterCard/characterCard";
+import Link from "next/link";
+
 import { fetchAPI } from "../../lib/api";
+
+import { Container, Row } from "react-bootstrap";
+import { CharacterCard } from "../../components";
 
 const personajes = () => {
   const [characters, setCharacters] = useState(undefined);
+
   useEffect(() => {
     async function fetchCharacters() {
       const charactersResponse = await fetchAPI("/characters", {
@@ -17,11 +20,8 @@ const personajes = () => {
   }, []);
 
   return (
-    <Container style={{ textAlign: "center", padding: "4rem 0" }}>
-      <Link
-        href="/"
-        style={{ position: "absolute", left: "20px", top: "20px" }}
-      >
+    <Container>
+      <Link href="/" className="back-button">
         <h2>← Atrás</h2>
       </Link>
       <h1>Personajes</h1>

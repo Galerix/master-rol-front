@@ -28,7 +28,7 @@ Abre [http://localhost:3000](http://localhost:3000) con tu navegador para ver el
 
 - Las utlidades como las funciones que llaman a la api del backend están en la carpeta `lib`.
 
-- Los estilos de css están en la carpeta `styles`.
+- Los estilos de scss están en la carpeta `styles`.
 
 Para ahorrar tiempo en el diseño se utiliza una libreria que se llama react-bootstrap. Para saber más echa un vistazo a la [Documentación de React-Bootstrap](https://react-bootstrap.github.io/).
 

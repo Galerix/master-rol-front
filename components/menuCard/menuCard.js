@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
+
 import { Card, Col } from "react-bootstrap";
-import styles from "../../styles/card.module.css";
+
+import styles from "../../styles/components/card.module.scss";
 
 const MenuCard = ({ link, name, image }) => {
   return (

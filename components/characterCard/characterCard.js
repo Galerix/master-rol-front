@@ -1,14 +1,12 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
 import { Card, Col } from "react-bootstrap";
 import { getStrapiMedia } from "../../lib/media";
-import styles from "../../styles/card.module.css";
+
+import styles from "../../styles/components/card.module.scss";
 
 const CharacterCard = ({ character }) => {
-  const router = useRouter();
   const imageUrl = getStrapiMedia(character.attributes.image);
-  console.log(character);
 
   return (
     <Link

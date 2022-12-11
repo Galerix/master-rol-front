@@ -1,9 +1,10 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color-scheme: dark;
+  color: white;
+  background: black;
 }
 
 a {
@@ -11,15 +12,18 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+.container {
+  text-align: center;
+  padding: 4rem 0;
 }
 
-html {
-  color-scheme: dark;
+h1 {
+  margin-bottom: 20px;
 }
-body {
-  color: white;
-  background: black;
+
+.back-button {
+  position: absolute;
+  left: 20px;
+  top: 20px;
 }
 
