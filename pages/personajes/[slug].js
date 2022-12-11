@@ -1,11 +1,9 @@
-import { Button } from "bootstrap";
 import Link from "next/link";
 import React from "react";
 import {
   Col,
   Container,
   Image,
-  OverlayTrigger,
   ProgressBar,
   Row,
   Table,
@@ -94,29 +92,7 @@ const personaje = ({ character }) => {
                   >
                     <thead>
                       <tr>
-                        <th>
-                          <OverlayTrigger
-                            placement="bottom"
-                            overlay={
-                              <Tooltip id="button-tooltip-2">Fuerza</Tooltip>
-                            }
-                          >
-                            {({ ref, ...triggerHandler }) => (
-                              <Button
-                                variant="light"
-                                {...triggerHandler}
-                                className="d-inline-flex align-items-center"
-                              >
-                                <Image
-                                  ref={ref}
-                                  roundedCircle
-                                  src="holder.js/20x20?text=J&bg=28a745&fg=FFF"
-                                />
-                                <span className="ms-1">S</span>
-                              </Button>
-                            )}
-                          </OverlayTrigger>
-                        </th>
+                        <th>S</th>
                         <th>P</th>
                         <th>E</th>
                         <th>C</th>
