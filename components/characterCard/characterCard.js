@@ -17,7 +17,7 @@ const CharacterCard = ({ character }) => {
         <Card bg="dark" text="white" className={styles.background}>
           <Card.Img variant="top" src={imageUrl} />
           <Card.Body>
-            <Card.Title>{character.attributes.name} →</Card.Title>
+            <Card.Title>{character.attributes.name} → Hola</Card.Title>
             <Card.Subtitle>
               {character.attributes.race.data.attributes.Name} -{" "}
               {character.attributes.job.data.attributes.Name}
