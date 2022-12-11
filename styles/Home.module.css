@@ -43,6 +43,7 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  margin-bottom: 20px;
 }
 
 .title,
@@ -70,7 +71,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 1000px;
 }
 
 .card {
@@ -127,3 +128,4 @@
     filter: invert(1);
   }
 }
+

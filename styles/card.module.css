@@ -1,0 +1,9 @@
+.background {
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.background:hover {
+  background-color: DodgerBlue !important;
+  opacity: 1;
+}
