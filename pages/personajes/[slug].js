@@ -1,15 +1,11 @@
 import Link from "next/link";
 import React from "react";
 import {
-  Button,
   Col,
   Container,
   Image,
-  OverlayTrigger,
   ProgressBar,
   Row,
-  Table,
-  Tooltip,
 } from "react-bootstrap";
 import { CharacterStats, InventoryTable } from "../../components";
 import { fetchAPI } from "../../lib/api";
@@ -17,21 +13,11 @@ import { getStrapiMedia } from "../../lib/media";
 
 import styles from "../../styles/pages/personajes.module.scss";
 
-const personaje = ({ character }) => {
-  const imageUrl = getStrapiMedia(character.attributes.image);
+const Personaje = ({ character }) => {
+  const imageUrl = character.attributes.image.data ? getStrapiMedia(character.attributes.image) : "";
+
   const health = (character.attributes.health / 50) * 100;
 
-  const raceTooltip = (props) => (
-    <Tooltip id="race-tooltip" {...props}>
-      {character.attributes.race.data.attributes.Skill}
-    </Tooltip>
-  );
-
-  const jobTooltip = (props) => (
-    <Tooltip id="job-tooltip" {...props}>
-      {character.attributes.job.data.attributes.Skill}
-    </Tooltip>
-  );
 
   return (
     <Container fluid className={styles.characterSheet}>
@@ -39,38 +25,27 @@ const personaje = ({ character }) => {
         <h2>← Atrás</h2>
       </Link>
       <Row className={styles.characterRow}>
-        <Col md={4} className={styles.imageStats}>
-          <Image src={imageUrl} />
+        <Col sm={4} className={styles.imageStats}>
+          <Image src={imageUrl} alt={character.attributes.name} />
           <CharacterStats character={character} />
         </Col>
-        <Col md={4} className={styles.infoCol}>
+        <Col sm={4} className={styles.infoCol}>
           <div className={styles.titles}>
-            <h3>Nombre: {character.attributes.name}</h3>
+            <h1>{character.attributes.name}</h1>
 
-            <OverlayTrigger
-              placement="right"
-              delay={{ show: 100, hide: 100 }}
-              overlay={raceTooltip}
-              trigger={["hover", "click"]}
-            >
-              <h3>Raza: {character.attributes.race.data.attributes.Name}</h3>
-            </OverlayTrigger>
+              <h3>{character.attributes.race.data.attributes.Name}</h3>
+              <p>{character.attributes.race.data.attributes.Skill}</p>
 
-            <OverlayTrigger
-              placement="right"
-              delay={{ show: 100, hide: 100 }}
-              overlay={jobTooltip}
-              trigger={["hover", "click"]}
-            >
-              <h3> Oficio: {character.attributes.job.data.attributes.Name}</h3>
-            </OverlayTrigger>
+              <h3>{character.attributes.job.data.attributes.Name}</h3>
+              <p>{character.attributes.job.data.attributes.Skill}</p>
+            
           </div>
 
           <div className={styles.progressBars}>
             <h3>Nivel: {character.attributes.level}</h3>
 
             <div className={styles.progressBar}>
-              <h3>EXP:</h3>
+              <p>EXP:</p>
               <ProgressBar
                 style={{ width: "100%" }}
                 now={character.attributes.experience}
@@ -79,7 +54,7 @@ const personaje = ({ character }) => {
             </div>
 
             <div className={styles.progressBar}>
-              <h3>HP:</h3>
+              <p>HP:</p>
               <ProgressBar
                 style={{ width: "100%" }}
                 variant="success"
@@ -133,4 +108,4 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default personaje;
+export default Personaje;

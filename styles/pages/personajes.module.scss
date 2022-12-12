@@ -3,63 +3,123 @@
 }
 
 .characterSheet {
-  padding: 10vh;
+  padding: 10vh 10vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .characterRow {
     background-color: #1a1d20 !important;
-    min-height: 80vh;
+
     h3 {
       width: fit-content;
+      margin-bottom: 10px;
+    }
+
+    p {
       margin-bottom: 20px;
     }
+
   }
+
   .imageStats {
     display: flex;
     padding: 0;
     flex-direction: row;
+
     img {
       height: 100%;
       width: 100%;
       object-fit: cover;
       flex: 6;
     }
+
     table {
       margin: 0;
       flex: 1;
+
       th {
         vertical-align: middle;
         text-align: center;
       }
     }
   }
+
   .infoCol {
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     .titles {
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
+
     .progressBars {
       display: flex;
       flex-direction: column;
       justify-content: center;
+
       .progressBar {
         align-items: center;
         flex-direction: row;
         display: flex;
-        margin-bottom: 20px;
-        h3 {
-          width: 80px;
+        margin-bottom: 5px;
+
+        p {
+          width: 50px;
           margin-bottom: 0;
         }
       }
     }
   }
+
   .itemTable {
-    text-align: center;
     padding: 0;
+    text-align: center;
+
   }
+}
+
+.Normal {
+  color: white !important;
+  text-shadow: 0 0 5px white;
+  width: fit-content;
+  margin: 0;
+  text-align: center;
+}
+
+.Raro {
+  color: lightgreen !important;
+  text-shadow: 0 0 5px green;
+  width: fit-content;
+  margin: 0;
+  text-align: center;
+}
+
+.Extraordinario {
+  color: lightblue !important;
+  text-shadow: 0 0 5px blue;
+  width: fit-content;
+  margin: 0;
+  text-align: center;
+}
+
+.Único {
+  color: lightyellow !important;
+  text-shadow: 0 0 5px yellow;
+  width: fit-content;
+  margin: 0;
+  text-align: center;
+}
+
+.Legendario {
+  color: violet !important;
+  text-shadow: 0 0 5px violet;
+  width: fit-content;
+  margin: 0;
+  text-align: center;
 }

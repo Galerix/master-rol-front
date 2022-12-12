@@ -6,7 +6,7 @@ import { getStrapiMedia } from "../../lib/media";
 import styles from "../../styles/components/card.module.scss";
 
 const CharacterCard = ({ character }) => {
-  const imageUrl = getStrapiMedia(character.attributes.image);
+  const imageUrl = character.attributes.image.data ? getStrapiMedia(character.attributes.image) : "";
 
   const slug = character.attributes.slug ? character.attributes.slug : "";
   const name = character.attributes.name

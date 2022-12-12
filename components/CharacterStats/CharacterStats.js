@@ -42,7 +42,7 @@ const CharacterStats = ({ character }) => {
     <Table striped bordered hover variant="dark">
       <tbody>
         <OverlayTrigger
-          placement="right"
+          placement="left"
           delay={{ show: 100, hide: 100 }}
           overlay={strengthTooltip}
           trigger={["hover", "click"]}
@@ -54,7 +54,7 @@ const CharacterStats = ({ character }) => {
         </OverlayTrigger>
 
         <OverlayTrigger
-          placement="right"
+          placement="left"
           delay={{ show: 100, hide: 100 }}
           overlay={perceptionTooltip}
           trigger={["hover", "click"]}
@@ -65,7 +65,7 @@ const CharacterStats = ({ character }) => {
           </tr>
         </OverlayTrigger>
         <OverlayTrigger
-          placement="right"
+          placement="left"
           delay={{ show: 100, hide: 100 }}
           overlay={enduranceTooltip}
           trigger={["hover", "click"]}
@@ -76,7 +76,7 @@ const CharacterStats = ({ character }) => {
           </tr>
         </OverlayTrigger>
         <OverlayTrigger
-          placement="right"
+          placement="left"
           delay={{ show: 100, hide: 100 }}
           overlay={charismaTooltip}
           trigger={["hover", "click"]}
@@ -87,7 +87,7 @@ const CharacterStats = ({ character }) => {
           </tr>
         </OverlayTrigger>
         <OverlayTrigger
-          placement="right"
+          placement="left"
           delay={{ show: 100, hide: 100 }}
           overlay={intelligenceTooltip}
           trigger={["hover", "click"]}
@@ -98,7 +98,7 @@ const CharacterStats = ({ character }) => {
           </tr>
         </OverlayTrigger>
         <OverlayTrigger
-          placement="right"
+          placement="left"
           delay={{ show: 100, hide: 100 }}
           overlay={agilityTooltip}
           trigger={["hover", "click"]}
@@ -109,7 +109,7 @@ const CharacterStats = ({ character }) => {
           </tr>
         </OverlayTrigger>
         <OverlayTrigger
-          placement="right"
+          placement="left"
           delay={{ show: 100, hide: 100 }}
           overlay={luckTooltip}
           trigger={["hover", "click"]}
