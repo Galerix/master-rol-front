@@ -14,7 +14,7 @@ export default function Home() {
         />
         <MenuCard link="/enemigos" name="Enemigos" image="/orc.png" />
         <MenuCard link="/cofre" name="Cofre" image="/chest.png" />
-        <MenuCard link="/objetos" name="Objetos" image="/weapons.png" />
+        <MenuCard link="/objetos" name="Objetos" image="/weapons.psng" />
       </Row>
     </Container>
   );

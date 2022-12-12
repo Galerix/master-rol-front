@@ -1,154 +1,105 @@
 import Link from "next/link";
 import React from "react";
 import {
+  Button,
   Col,
   Container,
   Image,
+  OverlayTrigger,
   ProgressBar,
   Row,
   Table,
+  Tooltip,
 } from "react-bootstrap";
+import { CharacterStats, InventoryTable } from "../../components";
 import { fetchAPI } from "../../lib/api";
 import { getStrapiMedia } from "../../lib/media";
+
+import styles from "../../styles/pages/personajes.module.scss";
 
 const personaje = ({ character }) => {
   const imageUrl = getStrapiMedia(character.attributes.image);
   const health = (character.attributes.health / 50) * 100;
+
+  const raceTooltip = (props) => (
+    <Tooltip id="race-tooltip" {...props}>
+      {character.attributes.race.data.attributes.Skill}
+    </Tooltip>
+  );
+
+  const jobTooltip = (props) => (
+    <Tooltip id="job-tooltip" {...props}>
+      {character.attributes.job.data.attributes.Skill}
+    </Tooltip>
+  );
+
   return (
-    <Container style={{ padding: "4rem 0" }}>
-      <Link
-        href="/personajes"
-        style={{ position: "absolute", left: "20px", top: "20px" }}
-      >
+    <Container fluid className={styles.characterSheet}>
+      <Link href="/personajes" className="backButton">
         <h2>← Atrás</h2>
       </Link>
-      <Row style={{ backgroundColor: "#1a1d20" }}>
-        <Col md={4} style={{ padding: 0, overflow: "hidden" }}>
-          <Image
-            src={imageUrl}
-            height="100%"
-            style={{ objectFit: "cover", objectPosition: "-70px" }}
-          />
+      <Row className={styles.characterRow}>
+        <Col md={4} className={styles.imageStats}>
+          <Image src={imageUrl} />
+          <CharacterStats character={character} />
         </Col>
-        <Col md={8} style={{ padding: "20px" }}>
-          <Row>
-            <Col
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "end",
-              }}
+        <Col md={4} className={styles.infoCol}>
+          <div className={styles.titles}>
+            <h3>Nombre: {character.attributes.name}</h3>
+
+            <OverlayTrigger
+              placement="right"
+              delay={{ show: 100, hide: 100 }}
+              overlay={raceTooltip}
+              trigger={["hover", "click"]}
             >
-              <h3>{character.attributes.name}</h3>
-              <h5 style={{ marginBottom: 0 }}>
-                Nivel: {character.attributes.level}
-              </h5>
-            </Col>
-            <Col>
-              <p style={{ marginBottom: "5px" }}>
-                HP: {character.attributes.health}/50
-              </p>
+              <h3>Raza: {character.attributes.race.data.attributes.Name}</h3>
+            </OverlayTrigger>
+
+            <OverlayTrigger
+              placement="right"
+              delay={{ show: 100, hide: 100 }}
+              overlay={jobTooltip}
+              trigger={["hover", "click"]}
+            >
+              <h3> Oficio: {character.attributes.job.data.attributes.Name}</h3>
+            </OverlayTrigger>
+          </div>
+
+          <div className={styles.progressBars}>
+            <h3>Nivel: {character.attributes.level}</h3>
+
+            <div className={styles.progressBar}>
+              <h3>EXP:</h3>
               <ProgressBar
+                style={{ width: "100%" }}
+                now={character.attributes.experience}
+                label={`${character.attributes.experience} / 100`}
+              />
+            </div>
+
+            <div className={styles.progressBar}>
+              <h3>HP:</h3>
+              <ProgressBar
+                style={{ width: "100%" }}
                 variant="success"
                 now={health}
-                label={`${health}%`}
+                label={`${character.attributes.health}/50`}
               />
-              <p style={{ marginBottom: "5px" }}>
-                EXP: {character.attributes.experience}/100
-              </p>
-              <ProgressBar
-                now={character.attributes.experience}
-                label={`${character.attributes.experience}%`}
-              />
-            </Col>
-          </Row>
-          <Row style={{ paddingTop: "25px" }}>
-            <Col>
-              <h5>{character.attributes.race.data.attributes.Name}</h5>
-              <h6 style={{ marginBottom: 0 }}>
-                {character.attributes.race.data.attributes.Skill}
-              </h6>
-            </Col>
-          </Row>
-          <Row style={{ paddingTop: "25px" }}>
-            <Col>
-              <h5>{character.attributes.job.data.attributes.Name}</h5>
-              <h6 style={{ marginBottom: 0 }}>
-                {character.attributes.job.data.attributes.Skill}
-              </h6>
-            </Col>
-          </Row>
-          <Row style={{ paddingTop: "25px" }}>
-            <Col>
-              <h5>Stats</h5>
-              <Row>
-                <Col>
-                  <Table
-                    style={{ textAlign: "center" }}
-                    striped
-                    bordered
-                    hover
-                    variant="dark"
-                  >
-                    <thead>
-                      <tr>
-                        <th>S</th>
-                        <th>P</th>
-                        <th>E</th>
-                        <th>C</th>
-                        <th>I</th>
-                        <th>A</th>
-                        <th>L</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th>{character.attributes.strength}</th>
-                        <th>{character.attributes.perception}</th>
-                        <th>{character.attributes.endurance}</th>
-                        <th>{character.attributes.charisma}</th>
-                        <th>{character.attributes.intelligence}</th>
-                        <th>{character.attributes.agility}</th>
-                        <th>{character.attributes.luck}</th>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-          <Row style={{ paddingTop: "25px" }}>
-            <Col>
-              <Table
-                style={{ textAlign: "center" }}
-                striped
-                bordered
-                hover
-                variant="dark"
-              >
-                <tbody>
-                  <tr>
-                    <th>Equipo</th>
-                    <th>{character.attributes.perception}</th>
-                    <th>{character.attributes.endurance}</th>
-                    <th>{character.attributes.charisma}</th>
-                    <th>{character.attributes.intelligence}</th>
-                    <th>{character.attributes.agility}</th>
-                    <th>{character.attributes.luck}</th>
-                  </tr>
-                  <tr>
-                    <th>Inventario</th>
-                    <th>{character.attributes.perception}</th>
-                    <th>{character.attributes.endurance}</th>
-                    <th>{character.attributes.charisma}</th>
-                    <th>{character.attributes.intelligence}</th>
-                    <th>{character.attributes.agility}</th>
-                    <th>{character.attributes.luck}</th>
-                  </tr>
-                </tbody>
-              </Table>
-            </Col>
-          </Row>
+            </div>
+          </div>
+        </Col>
+        <Col className={styles.itemTable}>
+          <InventoryTable
+            items={character.attributes.equipment.data}
+            name="Equipo"
+          />
+        </Col>
+        <Col className={styles.itemTable}>
+          <InventoryTable
+            items={character.attributes.inventory.data}
+            name="Inventario"
+          />
         </Col>
       </Row>
     </Container>

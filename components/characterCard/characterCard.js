@@ -8,19 +8,26 @@ import styles from "../../styles/components/card.module.scss";
 const CharacterCard = ({ character }) => {
   const imageUrl = getStrapiMedia(character.attributes.image);
 
+  const slug = character.attributes.slug ? character.attributes.slug : "";
+  const name = character.attributes.name
+    ? character.attributes.name
+    : "No tiene nombre";
+  const race = character.attributes.race.data
+    ? character.attributes.race.data.attributes.Name
+    : "Raza indefinida";
+  const job = character.attributes.job.data
+    ? character.attributes.job.data.attributes.Name
+    : "No tiene oficio";
+
   return (
-    <Link
-      href={`/personajes/${character.attributes.slug}`}
-      style={{ padding: "0" }}
-    >
-      <Col style={{ padding: "5px" }}>
+    <Link href={`/personajes/${slug}`}>
+      <Col className={styles.cardColumn}>
         <Card bg="dark" text="white" className={styles.background}>
           <Card.Img variant="top" src={imageUrl} />
           <Card.Body>
-            <Card.Title>{character.attributes.name} →</Card.Title>
+            <Card.Title>{name} →</Card.Title>
             <Card.Subtitle>
-              {character.attributes.race.data.attributes.Name} -{" "}
-              {character.attributes.job.data.attributes.Name}
+              {race} - {job}
             </Card.Subtitle>
           </Card.Body>
         </Card>
