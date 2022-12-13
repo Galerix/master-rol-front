@@ -1,124 +1,70 @@
 import React from "react";
 import { OverlayTrigger, Table, Tooltip } from "react-bootstrap";
+import { CharacterStat } from "../../components";
 
 const CharacterStats = ({ character }) => {
-  const strengthTooltip = (props) => (
-    <Tooltip id="strength-tooltip" {...props}>
-      Strength (Fuerza)
-    </Tooltip>
-  );
-  const perceptionTooltip = (props) => (
-    <Tooltip id="strength-tooltip" {...props}>
-      Perception (Percepción)
-    </Tooltip>
-  );
-  const enduranceTooltip = (props) => (
-    <Tooltip id="strength-tooltip" {...props}>
-      Endurance (Resistencia)
-    </Tooltip>
-  );
-  const charismaTooltip = (props) => (
-    <Tooltip id="strength-tooltip" {...props}>
-      Charisma (Carisma)
-    </Tooltip>
-  );
-  const intelligenceTooltip = (props) => (
-    <Tooltip id="strength-tooltip" {...props}>
-      Intelligence (Inteligencia)
-    </Tooltip>
-  );
-  const agilityTooltip = (props) => (
-    <Tooltip id="strength-tooltip" {...props}>
-      Agility (Agilidad)
-    </Tooltip>
-  );
-  const luckTooltip = (props) => (
-    <Tooltip id="strength-tooltip" {...props}>
-      Luck (Suerte)
-    </Tooltip>
-  );
+  var items = [];
+
+  character.attributes.inventory.data.map((item) => {
+    items.push(item);
+  });
+
+  character.attributes.equipment.data.map((item) => {
+    items.push(item);
+  });
 
   return (
     <Table striped bordered hover variant="dark">
       <tbody>
-        <OverlayTrigger
-          placement="left"
-          delay={{ show: 100, hide: 100 }}
-          overlay={strengthTooltip}
-          trigger={["hover", "click"]}
-        >
-          <tr>
-            <th>S</th>
-            <th>{character.attributes.strength}</th>
-          </tr>
-        </OverlayTrigger>
-
-        <OverlayTrigger
-          placement="left"
-          delay={{ show: 100, hide: 100 }}
-          overlay={perceptionTooltip}
-          trigger={["hover", "click"]}
-        >
-          <tr>
-            <th>P</th>
-            <th>{character.attributes.perception}</th>
-          </tr>
-        </OverlayTrigger>
-        <OverlayTrigger
-          placement="left"
-          delay={{ show: 100, hide: 100 }}
-          overlay={enduranceTooltip}
-          trigger={["hover", "click"]}
-        >
-          <tr>
-            <th>E</th>
-            <th>{character.attributes.endurance}</th>
-          </tr>
-        </OverlayTrigger>
-        <OverlayTrigger
-          placement="left"
-          delay={{ show: 100, hide: 100 }}
-          overlay={charismaTooltip}
-          trigger={["hover", "click"]}
-        >
-          <tr>
-            <th>C</th>
-            <th>{character.attributes.charisma}</th>
-          </tr>
-        </OverlayTrigger>
-        <OverlayTrigger
-          placement="left"
-          delay={{ show: 100, hide: 100 }}
-          overlay={intelligenceTooltip}
-          trigger={["hover", "click"]}
-        >
-          <tr>
-            <th>I</th>
-            <th>{character.attributes.intelligence}</th>
-          </tr>
-        </OverlayTrigger>
-        <OverlayTrigger
-          placement="left"
-          delay={{ show: 100, hide: 100 }}
-          overlay={agilityTooltip}
-          trigger={["hover", "click"]}
-        >
-          <tr>
-            <th>A</th>
-            <th>{character.attributes.agility}</th>
-          </tr>
-        </OverlayTrigger>
-        <OverlayTrigger
-          placement="left"
-          delay={{ show: 100, hide: 100 }}
-          overlay={luckTooltip}
-          trigger={["hover", "click"]}
-        >
-          <tr>
-            <th>L</th>
-            <th>{character.attributes.luck}</th>
-          </tr>
-        </OverlayTrigger>
+        <CharacterStat
+          stat={character.attributes.strength}
+          statAcronym="S"
+          statName="Strength"
+          statNameEsp="Fuerza"
+          items={items}
+        />
+        <CharacterStat
+          stat={character.attributes.perception}
+          statAcronym="P"
+          statName="Perception"
+          statNameEsp="Percepción"
+          items={items}
+        />
+        <CharacterStat
+          stat={character.attributes.endurance}
+          statAcronym="E"
+          statName="Endurance"
+          statNameEsp="Resistencia"
+          items={items}
+        />
+        <CharacterStat
+          stat={character.attributes.charisma}
+          statAcronym="C"
+          statName="Charisma"
+          statNameEsp="Carisma"
+          items={items}
+        />
+        <CharacterStat
+          stat={character.attributes.intelligence}
+          statAcronym="I"
+          statName="Intelligence"
+          statNameEsp="Inteligencia"
+          items={items}
+        />
+        <CharacterStat
+          stat={character.attributes.agility}
+          statAcronym="A"
+          statName="Agility"
+          statNameEsp="Agilidad"
+          items={items}
+        />
+        <CharacterStat
+          stat={character.attributes.strength}
+          statAcronym="L"
+          statName="Luck"
+          statNameEsp="Suerte"
+          items={items}
+        />
       </tbody>
     </Table>
   );

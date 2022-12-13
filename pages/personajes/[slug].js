@@ -1,12 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import {
-  Col,
-  Container,
-  Image,
-  ProgressBar,
-  Row,
-} from "react-bootstrap";
+import { Col, Container, Image, ProgressBar, Row } from "react-bootstrap";
 import { CharacterStats, InventoryTable } from "../../components";
 import { fetchAPI } from "../../lib/api";
 import { getStrapiMedia } from "../../lib/media";
@@ -14,10 +8,11 @@ import { getStrapiMedia } from "../../lib/media";
 import styles from "../../styles/pages/personajes.module.scss";
 
 const Personaje = ({ character }) => {
-  const imageUrl = character.attributes.image.data ? getStrapiMedia(character.attributes.image) : "";
+  const imageUrl = character.attributes.image.data
+    ? getStrapiMedia(character.attributes.image)
+    : "";
 
   const health = (character.attributes.health / 50) * 100;
-
 
   return (
     <Container fluid className={styles.characterSheet}>
@@ -33,12 +28,11 @@ const Personaje = ({ character }) => {
           <div className={styles.titles}>
             <h1>{character.attributes.name}</h1>
 
-              <h3>{character.attributes.race.data.attributes.Name}</h3>
-              <p>{character.attributes.race.data.attributes.Skill}</p>
+            <h3>{character.attributes.race.data.attributes.Name}</h3>
+            <p>{character.attributes.race.data.attributes.Skill}</p>
 
-              <h3>{character.attributes.job.data.attributes.Name}</h3>
-              <p>{character.attributes.job.data.attributes.Skill}</p>
-            
+            <h3>{character.attributes.job.data.attributes.Name}</h3>
+            <p>{character.attributes.job.data.attributes.Skill}</p>
           </div>
 
           <div className={styles.progressBars}>

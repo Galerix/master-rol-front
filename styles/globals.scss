@@ -7,16 +7,13 @@ body {
   background: black;
 }
 
-.element::-webkit-scrollbar {
-  width: 0 !important
+html {
+  overflow: scroll;
 }
 
-.element {
-  overflow: -moz-scrollbars-none;
-}
-
-.element {
-  -ms-overflow-style: none;
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
 }
 
 a {

@@ -20,7 +20,6 @@
     p {
       margin-bottom: 20px;
     }
-
   }
 
   .imageStats {
@@ -80,13 +79,11 @@
   .itemTable {
     padding: 0;
     text-align: center;
-
   }
 }
 
 .Normal {
   color: white !important;
-  text-shadow: 0 0 5px white;
   width: fit-content;
   margin: 0;
   text-align: center;
@@ -94,7 +91,7 @@
 
 .Raro {
   color: lightgreen !important;
-  text-shadow: 0 0 5px green;
+  text-shadow: 0 0 3px green;
   width: fit-content;
   margin: 0;
   text-align: center;
@@ -102,7 +99,7 @@
 
 .Extraordinario {
   color: lightblue !important;
-  text-shadow: 0 0 5px blue;
+  text-shadow: 0 0 8px blue;
   width: fit-content;
   margin: 0;
   text-align: center;
@@ -110,7 +107,7 @@
 
 .Único {
   color: lightyellow !important;
-  text-shadow: 0 0 5px yellow;
+  text-shadow: 0 0 10px yellow;
   width: fit-content;
   margin: 0;
   text-align: center;
@@ -118,7 +115,7 @@
 
 .Legendario {
   color: violet !important;
-  text-shadow: 0 0 5px violet;
+  text-shadow: 0 0 20px violet;
   width: fit-content;
   margin: 0;
   text-align: center;
