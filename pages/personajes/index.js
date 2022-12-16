@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { fetchAPI } from "../../lib/api";
 
-import { Container, Row } from "react-bootstrap";
+import { Button, Container, Row } from "react-bootstrap";
 import { CharacterCard } from "../../components";
 
 import styles from "../../styles/pages/personajes.module.scss";
 
-const Personajes = ({characters}) => {
+const Personajes = ({ characters }) => {
+  const router = useRouter();
 
   return (
     <Container>
@@ -18,22 +20,27 @@ const Personajes = ({characters}) => {
       <h1>Personajes</h1>
       <Row md={{ cols: 5 }} className={styles.characterRow}>
         {characters &&
-          characters.data.map((character) => {
+          characters.map((character) => {
             return <CharacterCard key={character.id} character={character} />;
           })}
       </Row>
+      <Button
+        variant="primary"
+        size="lg"
+        onClick={() => {
+          router.push("/crear-personaje");
+        }}
+      >
+        AÑADIR PERSONAJE
+      </Button>
     </Container>
   );
 };
 
 export async function getStaticProps() {
-  const charactersRes = await fetchAPI("/characters", {
-    populate: "*",
-  });
-
-
+  const { characters } = await fetchAPI("/characters");
   return {
-    props: { characters: charactersRes },
+    props: { characters },
     revalidate: 1,
   };
 }

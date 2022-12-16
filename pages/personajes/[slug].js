@@ -1,18 +1,26 @@
 import Link from "next/link";
 import React from "react";
 import { Col, Container, Image, ProgressBar, Row } from "react-bootstrap";
-import { CharacterStats, InventoryTable } from "../../components";
+import {
+  CharacterStats,
+  EquipmentTable,
+  InventoryTable,
+} from "../../components";
 import { fetchAPI } from "../../lib/api";
 import { getStrapiMedia } from "../../lib/media";
 
 import styles from "../../styles/pages/personajes.module.scss";
 
 const Personaje = ({ character }) => {
-  const imageUrl = character.attributes.image.data
-    ? getStrapiMedia(character.attributes.image)
-    : "";
+  const imageUrl = character.image.data ? getStrapiMedia(character.image) : "";
 
-  const health = (character.attributes.health / 50) * 100;
+  const maxHealth = character.maxHealth ? character.maxHealth : 0;
+  const health = character.maxHealth ? character.health : 0;
+
+  const hpNow = character.maxHealth ? (health / maxHealth) * 100 : 0;
+  const expNow = (character.experience / character.maxExperience) * 100;
+
+  console.log(character.equipment);
 
   return (
     <Container fluid className={styles.characterSheet}>
@@ -21,29 +29,29 @@ const Personaje = ({ character }) => {
       </Link>
       <Row className={styles.characterRow}>
         <Col sm={4} className={styles.imageStats}>
-          <Image src={imageUrl} alt={character.attributes.name} />
+          <Image src={imageUrl} alt={character.name} />
           <CharacterStats character={character} />
         </Col>
         <Col sm={4} className={styles.infoCol}>
           <div className={styles.titles}>
-            <h1>{character.attributes.name}</h1>
+            <h1>{character.name}</h1>
 
-            <h3>{character.attributes.race.data.attributes.Name}</h3>
-            <p>{character.attributes.race.data.attributes.Skill}</p>
+            <h3>{character.race.name}</h3>
+            <p>{character.race.skill}</p>
 
-            <h3>{character.attributes.job.data.attributes.Name}</h3>
-            <p>{character.attributes.job.data.attributes.Skill}</p>
+            <h3>{character.job.name}</h3>
+            <p>{character.job.skill}</p>
           </div>
 
           <div className={styles.progressBars}>
-            <h3>Nivel: {character.attributes.level}</h3>
+            <h3>Nivel: {character.level}</h3>
 
             <div className={styles.progressBar}>
               <p>EXP:</p>
               <ProgressBar
                 style={{ width: "100%" }}
-                now={character.attributes.experience}
-                label={`${character.attributes.experience} / 100`}
+                now={expNow}
+                label={`${character.experience} / ${character.maxExperience}`}
               />
             </div>
 
@@ -52,23 +60,19 @@ const Personaje = ({ character }) => {
               <ProgressBar
                 style={{ width: "100%" }}
                 variant="success"
-                now={health}
-                label={`${character.attributes.health}/50`}
+                now={hpNow}
+                label={`${health} / ${maxHealth}`}
               />
             </div>
           </div>
         </Col>
+
         <Col className={styles.itemTable}>
-          <InventoryTable
-            items={character.attributes.equipment.data}
-            name="Equipo"
-          />
+          <EquipmentTable equipment={character.equipment} name="Equipo" />
         </Col>
+
         <Col className={styles.itemTable}>
-          <InventoryTable
-            items={character.attributes.inventory.data}
-            name="Inventario"
-          />
+          <InventoryTable items={character.inventory} name="Inventario" />
         </Col>
       </Row>
     </Container>
@@ -76,12 +80,12 @@ const Personaje = ({ character }) => {
 };
 
 export async function getStaticPaths() {
-  const charactersRes = await fetchAPI("/characters", { fields: ["slug"] });
+  const { characters } = await fetchAPI("/characters", { fields: ["slug"] });
 
   return {
-    paths: charactersRes.data.map((character) => ({
+    paths: characters.map((character) => ({
       params: {
-        slug: character.attributes.slug,
+        slug: character.slug,
       },
     })),
     fallback: false,
@@ -89,15 +93,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const charactersRes = await fetchAPI("/characters", {
+  const { characters } = await fetchAPI("/characters", {
     filters: {
       slug: params.slug,
     },
-    populate: "*",
   });
 
   return {
-    props: { character: charactersRes.data[0] },
+    props: { character: characters[0] },
     revalidate: 1,
   };
 }

@@ -14,9 +14,9 @@ const InventoryTable = ({ items, name }) => {
           items.map((item) => {
             let itemTooltip = (props) => (
               <Tooltip id="race-tooltip" {...props}>
-                {item.attributes.Type} - {item.attributes.Range} <br />
-                {item.attributes.bonus > 0 &&
-                  `+${item.attributes.bonus}  ${item.attributes.bonusType}`}
+                {item.type.name} - {item.tier.name} <br />
+                {item.bonus > 0 && `+${item.bonus}  ${item.bonusType}`} <br />
+                {item.penalty > 0 && `-${item.penalty}  ${item.penaltyType}`}
               </Tooltip>
             );
 
@@ -28,9 +28,99 @@ const InventoryTable = ({ items, name }) => {
                   overlay={itemTooltip}
                   trigger={["hover", "click"]}
                 >
-                  <td className={item.attributes.Range}>
-                    {item.attributes.Name}
-                  </td>
+                  <td className={item.tier.name}>{item.name}</td>
+                </OverlayTrigger>
+              </tr>
+            );
+          })}
+        {items &&
+          items.map((item) => {
+            let itemTooltip = (props) => (
+              <Tooltip id="race-tooltip" {...props}>
+                {item.type.name} - {item.tier.name} <br />
+                {item.bonus > 0 && `+${item.bonus}  ${item.bonusType}`} <br />
+                {item.penalty > 0 && `-${item.penalty}  ${item.penaltyType}`}
+              </Tooltip>
+            );
+
+            return (
+              <tr key={item.id}>
+                <OverlayTrigger
+                  placement="top"
+                  delay={{ show: 100, hide: 100 }}
+                  overlay={itemTooltip}
+                  trigger={["hover", "click"]}
+                >
+                  <td className={item.tier.name}>{item.name}</td>
+                </OverlayTrigger>
+              </tr>
+            );
+          })}
+        {items &&
+          items.map((item) => {
+            let itemTooltip = (props) => (
+              <Tooltip id="race-tooltip" {...props}>
+                {item.type.name} - {item.tier.name} <br />
+                {item.bonus > 0 && `+${item.bonus}  ${item.bonusType}`} <br />
+                {item.penalty > 0 && `-${item.penalty}  ${item.penaltyType}`}
+              </Tooltip>
+            );
+
+            return (
+              <tr key={item.id}>
+                <OverlayTrigger
+                  placement="top"
+                  delay={{ show: 100, hide: 100 }}
+                  overlay={itemTooltip}
+                  trigger={["hover", "click"]}
+                >
+                  <td className={item.tier.name}>{item.name}</td>
+                </OverlayTrigger>
+              </tr>
+            );
+          })}
+        {items &&
+          items.map((item) => {
+            let itemTooltip = (props) => (
+              <Tooltip id="race-tooltip" {...props}>
+                {item.type.name} - {item.tier.name} <br />
+                {item.bonus > 0 && `+${item.bonus}  ${item.bonusType}`} <br />
+                {item.penalty > 0 && `-${item.penalty}  ${item.penaltyType}`}
+              </Tooltip>
+            );
+
+            return (
+              <tr key={item.id}>
+                <OverlayTrigger
+                  placement="top"
+                  delay={{ show: 100, hide: 100 }}
+                  overlay={itemTooltip}
+                  trigger={["hover", "click"]}
+                >
+                  <td className={item.tier.name}>{item.name}</td>
+                </OverlayTrigger>
+              </tr>
+            );
+          })}
+        {items &&
+          items.map((item) => {
+            let itemTooltip = (props) => (
+              <Tooltip id="race-tooltip" {...props}>
+                {item.type.name} - {item.tier.name} <br />
+                {item.bonus > 0 && `+${item.bonus}  ${item.bonusType}`} <br />
+                {item.penalty > 0 && `-${item.penalty}  ${item.penaltyType}`}
+              </Tooltip>
+            );
+
+            return (
+              <tr key={item.id}>
+                <OverlayTrigger
+                  placement="top"
+                  delay={{ show: 100, hide: 100 }}
+                  overlay={itemTooltip}
+                  trigger={["hover", "click"]}
+                >
+                  <td className={item.tier.name}>{item.name}</td>
                 </OverlayTrigger>
               </tr>
             );

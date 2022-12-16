@@ -1,24 +1,49 @@
 import React from "react";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
-const CharacterStat = ({ stat, statAcronym, statName, statNameEsp, items }) => {
-  var statComplete = stat;
-
+const CharacterStat = ({
+  stat,
+  statAcronym,
+  statName,
+  statNameEsp,
+  equipment,
+}) => {
   var bonusItems = [];
+  var penaltyItems = [];
 
-  items.map((item) => {
-    if (item.attributes.bonus && item.attributes.bonusType == statName) {
+  function addVariations(item) {
+    if (item.bonus && item.bonusType == statName) {
       bonusItems.push(item);
-      statComplete += item.attributes.bonus;
     }
-  });
+    if (item.penalty && item.penaltyType == statName) {
+      penaltyItems.push(item);
+    }
+  }
+
+  addVariations(equipment.leftHand);
+  addVariations(equipment.rightHand);
+  addVariations(equipment.armor);
+  addVariations(equipment.accessory1);
+  addVariations(equipment.accessory2);
+
+  var statStyle =
+    stat.final > stat.initial
+      ? "Raro"
+      : stat.final < stat.initial
+      ? "Bajo"
+      : "Normal";
 
   const statTooltip = (props) => (
     <Tooltip id="strength-tooltip" {...props}>
-      {stat} {statName} ({statNameEsp}) <br />
+      {stat.initial} {statName} ({statNameEsp}) <br />
       {bonusItems.map((bonusItem) => (
-        <div className={bonusItem.attributes.Range}>
-          +{bonusItem.attributes.bonus} ({bonusItem.attributes.Name})
+        <div className="Raro">
+          +{bonusItem.bonus} ({bonusItem.name})
+        </div>
+      ))}
+      {penaltyItems.map((penaltyItem) => (
+        <div className={"Bajo"}>
+          -{penaltyItem.penalty} ({penaltyItem.name})
         </div>
       ))}
     </Tooltip>
@@ -30,12 +55,11 @@ const CharacterStat = ({ stat, statAcronym, statName, statNameEsp, items }) => {
       delay={{ show: 100, hide: 100 }}
       overlay={statTooltip}
       trigger={["hover", "click"]}
+      key={statAcronym}
     >
       <tr>
         <th>{statAcronym}</th>
-        <th className={statComplete != stat ? "Raro" : "Normal"}>
-          {statComplete}
-        </th>
+        <th className={statStyle}>{stat.final}</th>
       </tr>
     </OverlayTrigger>
   );

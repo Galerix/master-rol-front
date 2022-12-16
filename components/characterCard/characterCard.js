@@ -6,18 +6,12 @@ import { getStrapiMedia } from "../../lib/media";
 import styles from "../../styles/components/card.module.scss";
 
 const CharacterCard = ({ character }) => {
-  const imageUrl = character.attributes.image.data ? getStrapiMedia(character.attributes.image) : "";
+  const imageUrl = character.image.data ? getStrapiMedia(character.image) : "";
 
-  const slug = character.attributes.slug ? character.attributes.slug : "";
-  const name = character.attributes.name
-    ? character.attributes.name
-    : "No tiene nombre";
-  const race = character.attributes.race.data
-    ? character.attributes.race.data.attributes.Name
-    : "Raza indefinida";
-  const job = character.attributes.job.data
-    ? character.attributes.job.data.attributes.Name
-    : "No tiene oficio";
+  const slug = character.slug ? character.slug : "";
+  const name = character.name ? character.name : "No tiene nombre";
+  const race = character.race ? character.race.name : "Raza indefinida";
+  const job = character.job ? character.job.name : "No tiene oficio";
 
   return (
     <Link href={`/personajes/${slug}`}>
@@ -25,7 +19,7 @@ const CharacterCard = ({ character }) => {
         <Card bg="dark" text="white" className={styles.background}>
           <Card.Img variant="top" src={imageUrl} />
           <Card.Body>
-            <Card.Title>{name} →</Card.Title>
+            <Card.Title>{name}</Card.Title>
             <Card.Subtitle>
               {race} - {job}
             </Card.Subtitle>

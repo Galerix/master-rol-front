@@ -3,67 +3,57 @@ import { OverlayTrigger, Table, Tooltip } from "react-bootstrap";
 import { CharacterStat } from "../../components";
 
 const CharacterStats = ({ character }) => {
-  var items = [];
-
-  character.attributes.inventory.data.map((item) => {
-    items.push(item);
-  });
-
-  character.attributes.equipment.data.map((item) => {
-    items.push(item);
-  });
-
   return (
     <Table striped bordered hover variant="dark">
       <tbody>
         <CharacterStat
-          stat={character.attributes.strength}
+          stat={character.strength}
           statAcronym="S"
-          statName="Strength"
-          statNameEsp="Fuerza"
-          items={items}
+          statName="strength"
+          statNameEsp="fuerza"
+          equipment={character.equipment}
         />
         <CharacterStat
-          stat={character.attributes.perception}
+          stat={character.perception}
           statAcronym="P"
-          statName="Perception"
-          statNameEsp="Percepción"
-          items={items}
+          statName="perception"
+          statNameEsp="percepción"
+          equipment={character.equipment}
         />
         <CharacterStat
-          stat={character.attributes.endurance}
+          stat={character.endurance}
           statAcronym="E"
-          statName="Endurance"
-          statNameEsp="Resistencia"
-          items={items}
+          statName="endurance"
+          statNameEsp="resistencia"
+          equipment={character.equipment}
         />
         <CharacterStat
-          stat={character.attributes.charisma}
+          stat={character.charisma}
           statAcronym="C"
-          statName="Charisma"
-          statNameEsp="Carisma"
-          items={items}
+          statName="charisma"
+          statNameEsp="carisma"
+          equipment={character.equipment}
         />
         <CharacterStat
-          stat={character.attributes.intelligence}
+          stat={character.intelligence}
           statAcronym="I"
-          statName="Intelligence"
-          statNameEsp="Inteligencia"
-          items={items}
+          statName="intelligence"
+          statNameEsp="inteligencia"
+          equipment={character.equipment}
         />
         <CharacterStat
-          stat={character.attributes.agility}
+          stat={character.agility}
           statAcronym="A"
-          statName="Agility"
-          statNameEsp="Agilidad"
-          items={items}
+          statName="agility"
+          statNameEsp="agilidad"
+          equipment={character.equipment}
         />
         <CharacterStat
-          stat={character.attributes.strength}
+          stat={character.luck}
           statAcronym="L"
-          statName="Luck"
-          statNameEsp="Suerte"
-          items={items}
+          statName="luck"
+          statNameEsp="suerte"
+          equipment={character.equipment}
         />
       </tbody>
     </Table>

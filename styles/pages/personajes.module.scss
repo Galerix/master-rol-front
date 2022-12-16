@@ -1,5 +1,6 @@
 .characterRow {
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 .characterSheet {
@@ -72,6 +73,10 @@
           width: 50px;
           margin-bottom: 0;
         }
+
+        .progressBarText {
+          color: black !important;
+        }
       }
     }
   }
@@ -116,6 +121,22 @@
 .Legendario {
   color: violet !important;
   text-shadow: 0 0 20px violet;
+  width: fit-content;
+  margin: 0;
+  text-align: center;
+}
+
+.Maldito {
+  color: purple !important;
+  text-shadow: 0 0 20px purple;
+  width: fit-content;
+  margin: 0;
+  text-align: center;
+}
+
+.Bajo {
+  color: lightcoral !important;
+  text-shadow: 0 0 3px red;
   width: fit-content;
   margin: 0;
   text-align: center;
