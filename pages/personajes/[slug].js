@@ -69,9 +69,7 @@ const Personaje = ({ character }) => {
 
         <Col className={styles.itemTable}>
           <EquipmentTable equipment={character.equipment} name="Equipo" />
-        </Col>
 
-        <Col className={styles.itemTable}>
           <InventoryTable items={character.inventory} name="Inventario" />
         </Col>
       </Row>

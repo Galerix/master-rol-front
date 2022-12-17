@@ -57,7 +57,7 @@ const EquipmentTable = ({ equipment, name }) => {
     <Table striped bordered hover variant="dark">
       <thead>
         <tr>
-          <th>{name}</th>
+          <th colspan="2">{name}</th>
         </tr>
       </thead>
       <tbody>
@@ -76,8 +76,7 @@ const EquipmentTable = ({ equipment, name }) => {
           ) : (
             <td>Mano Izquierda</td>
           )}
-        </tr>
-        <tr>
+
           {equipment.rightHand.name ? (
             <OverlayTrigger
               placement="top"
@@ -101,12 +100,12 @@ const EquipmentTable = ({ equipment, name }) => {
               overlay={armorTooltip}
               trigger={["hover", "click"]}
             >
-              <td className={equipment.armor.tier.name}>
+              <td colspan="2" className={equipment.armor.tier.name}>
                 {equipment.armor.name}
               </td>
             </OverlayTrigger>
           ) : (
-            <td>Armadura</td>
+            <td colspan="2">Armadura</td>
           )}
         </tr>
         <tr>
@@ -124,8 +123,7 @@ const EquipmentTable = ({ equipment, name }) => {
           ) : (
             <td>Accesorio 1</td>
           )}
-        </tr>
-        <tr>
+
           {equipment.accessory2.name ? (
             <OverlayTrigger
               placement="top"
