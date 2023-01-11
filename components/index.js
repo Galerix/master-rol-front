@@ -4,3 +4,4 @@ export { default as CharacterStats } from "./CharacterStats/CharacterStats";
 export { default as InventoryTable } from "./InventoryTable/InventoryTable";
 export { default as EquipmentTable } from "./EquipmentTable/EquipmentTable";
 export { default as CharacterStat } from "./CharacterStat/CharacterStat";
+export { default as ItemCell } from "./ItemCell/ItemCell";

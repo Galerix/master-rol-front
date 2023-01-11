@@ -20,11 +20,11 @@ const CharacterStat = ({
     }
   }
 
-  addVariations(equipment.leftHand);
-  addVariations(equipment.rightHand);
-  addVariations(equipment.armor);
-  addVariations(equipment.accessory1);
-  addVariations(equipment.accessory2);
+  if (equipment.leftHand) addVariations(equipment.leftHand);
+  if (equipment.rightHand) addVariations(equipment.rightHand);
+  if (equipment.armor) addVariations(equipment.armor);
+  if (equipment.accessory1) addVariations(equipment.accessory1);
+  if (equipment.accessory2) addVariations(equipment.accessory2);
 
   var statStyle =
     stat.final > stat.initial

@@ -27,15 +27,24 @@ a {
   padding: 4rem 0;
 }
 
+#__next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 h1 {
   margin-bottom: 20px;
 }
 
 .backButton {
-  position: absolute;
+  position: fixed;
   left: 20px;
   top: 20px;
+  z-index: 2;
 }
 
 @import "pages/pages.module.scss";
-@import "components/components.module.scss";
+@import "./components/components.module.scss";

@@ -3,8 +3,6 @@ import React from "react";
 import { Card, Col } from "react-bootstrap";
 import { getStrapiMedia } from "../../lib/media";
 
-import styles from "../../styles/components/card.module.scss";
-
 const CharacterCard = ({ character }) => {
   const imageUrl = character.image.data ? getStrapiMedia(character.image) : "";
 
@@ -14,9 +12,9 @@ const CharacterCard = ({ character }) => {
   const job = character.job ? character.job.name : "No tiene oficio";
 
   return (
-    <Link href={`/personajes/${slug}`}>
-      <Col className={styles.cardColumn}>
-        <Card bg="dark" text="white" className={styles.background}>
+    <Col className="cardColumn">
+      <Link href={`/personajes/${slug}`}>
+        <Card bg="dark" text="white">
           <Card.Img variant="top" src={imageUrl} />
           <Card.Body>
             <Card.Title>{name}</Card.Title>
@@ -25,8 +23,8 @@ const CharacterCard = ({ character }) => {
             </Card.Subtitle>
           </Card.Body>
         </Card>
-      </Col>
-    </Link>
+      </Link>
+    </Col>
   );
 };
 

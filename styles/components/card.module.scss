@@ -1,13 +1,17 @@
 .cardColumn {
-  padding: 5px;
-}
-
-.background {
-  opacity: 0.8;
-  transition: 0.3s;
-}
-
-.background:hover {
-  background-color: DodgerBlue !important;
-  opacity: 1;
+  padding: 10px;
+  .card {
+    opacity: 0.8;
+    transition: 0.3s;
+    height: 100%;
+    img {
+      aspect-ratio: 1;
+      object-fit: cover;
+      object-position: top;
+    }
+    &:hover {
+      background-color: DodgerBlue !important;
+      opacity: 1;
+    }
+  }
 }

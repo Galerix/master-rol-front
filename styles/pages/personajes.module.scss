@@ -1,20 +1,37 @@
 .characterRow {
+  padding-left: 10px;
   justify-content: center;
   margin-bottom: 30px;
 }
 
+@media (min-width: 768px) {
+  .characterRow {
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+}
+
+.addPersonaje {
+  z-index: 2;
+  position: fixed;
+  right: 20px;
+  top: 20px;
+}
+
 .characterSheet {
-  padding: 10vh 10vw;
-  min-height: 100vh;
   display: flex;
+  padding: 5rem 2rem;
+  min-height: 100%;
   justify-content: center;
   align-items: center;
+  width: 100%;
 
-  .characterRow {
+  .row {
+    height: 100%;
+    width: 100%;
     background-color: #1a1d20 !important;
 
     h3 {
-      width: fit-content;
       margin-bottom: 10px;
     }
 
@@ -28,10 +45,30 @@
     padding: 0;
     flex-direction: row;
 
+    .imageContainer {
+      flex: 6;
+      position: relative;
+      .clickableText {
+        display: flex;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
     img {
+      aspect-ratio: 1;
       height: 100%;
       width: 100%;
       object-fit: cover;
+      object-position: top;
       flex: 6;
     }
 
@@ -51,6 +88,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    .imageInput {
+      display: none;
+      visibility: hidden;
+    }
 
     .titles {
       display: flex;
@@ -74,8 +116,8 @@
           margin-bottom: 0;
         }
 
-        .progressBarText {
-          color: black !important;
+        .progress {
+          width: 100%;
         }
       }
     }
@@ -93,7 +135,6 @@
 
 .Normal {
   color: white !important;
-  width: fit-content;
   margin: 0;
   text-align: center;
 }
@@ -101,7 +142,6 @@
 .Raro {
   color: lightgreen !important;
   text-shadow: 0 0 3px green;
-  width: fit-content;
   margin: 0;
   text-align: center;
 }
@@ -109,31 +149,27 @@
 .Extraordinario {
   color: lightblue !important;
   text-shadow: 0 0 8px blue;
-  width: fit-content;
   margin: 0;
   text-align: center;
 }
 
 .Único {
-  color: lightyellow !important;
-  text-shadow: 0 0 10px yellow;
-  width: fit-content;
+  color: plum !important;
+  text-shadow: 0 0 10px purple;
   margin: 0;
   text-align: center;
 }
 
 .Legendario {
-  color: violet !important;
-  text-shadow: 0 0 20px violet;
-  width: fit-content;
+  color: lightsalmon !important;
+  text-shadow: 0 0 20px orange;
   margin: 0;
   text-align: center;
 }
 
 .Maldito {
-  color: purple !important;
-  text-shadow: 0 0 20px purple;
-  width: fit-content;
+  color: red !important;
+  text-shadow: 0 0 20px darkred;
   margin: 0;
   text-align: center;
 }
@@ -141,7 +177,13 @@
 .Bajo {
   color: lightcoral !important;
   text-shadow: 0 0 3px red;
-  width: fit-content;
+  margin: 0;
+  text-align: center;
+}
+
+.Alto {
+  color: lightgreen !important;
+  text-shadow: 0 0 3px green;
   margin: 0;
   text-align: center;
 }

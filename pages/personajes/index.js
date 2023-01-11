@@ -7,8 +7,6 @@ import { fetchAPI } from "../../lib/api";
 import { Button, Container, Row } from "react-bootstrap";
 import { CharacterCard } from "../../components";
 
-import styles from "../../styles/pages/personajes.module.scss";
-
 const Personajes = ({ characters }) => {
   const router = useRouter();
 
@@ -17,14 +15,8 @@ const Personajes = ({ characters }) => {
       <Link href="/" className="backButton">
         <h2>← Atrás</h2>
       </Link>
-      <h1>Personajes</h1>
-      <Row md={{ cols: 5 }} className={styles.characterRow}>
-        {characters &&
-          characters.map((character) => {
-            return <CharacterCard key={character.id} character={character} />;
-          })}
-      </Row>
       <Button
+        className="addPersonaje"
         variant="primary"
         size="lg"
         onClick={() => {
@@ -33,6 +25,13 @@ const Personajes = ({ characters }) => {
       >
         AÑADIR PERSONAJE
       </Button>
+      <h1>Personajes</h1>
+      <Row xs={{ cols: 1 }} md={{ cols: 5 }} className="characterRow">
+        {characters &&
+          characters.map((character) => {
+            return <CharacterCard key={character.id} character={character} />;
+          })}
+      </Row>
     </Container>
   );
 };
